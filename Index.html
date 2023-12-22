@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=PT+Serif&display=swap" rel="stylesheet" />
+    <script lang="javascript" src="https://rawgit.com/SheetJS/js-xlsx/master/dist/xlsx.full.min.js"></script>
+    <link rel="stylesheet" href="style.css" />
+    <title>Employee Leave Management</title>
+</head>
+
+<body>
+    <!-- Top navigation -->
+    <div class="navbar">
+        <a href="">Employee Leave Sheet</a>
+    </div>
+    <div class="Mainpage">
+        <h1>Leave Sheet</h1>
+        <div class="card-wrapper">
+            <div class="employee-id-wrapper" id="employeeId">
+                <div class="col input-container">
+                    <label class="label-large" for="employee-id">Employee ID</label>
+                    <input type="text" id="employee-id" name="employee-id" placeholder="MID12345678" />
+                </div>
+            </div>
+
+            <div class="col line-item-container">
+                <div class="row line-item">
+                    <div class="col align-left input-container">
+                        <label for="casual-leave">Casual Leave</label>
+                        <input type="text" id="casual-leave" name="leavetype" />
+                    </div>
+
+                    <div class="col align-left input-container">
+                        <label for="from-date-casual">From</label>
+                        <input type="date" id="from-date-casual" name="from-date" />
+                    </div>
+
+                    <div class="col align-left input-container">
+                        <label for="to-date-casual">To</label>
+                        <input type="date" id="to-date-casual" name="to-date" />
+                    </div>
+                </div>
+
+
+                <div class="row line-item">
+                  <div class="col align-left input-container">
+                      <label for="sick-leave">sick Leave</label>
+                      <input type="text" id="sick-leave" name="leavetype" />
+                  </div>
+
+                  <div class="col align-left input-container">
+                      <label for="from-date-casual">From</label>
+                      <input type="date" id="from-date-casual" name="from-date" />
+                  </div>
+
+                  <div class="col align-left input-container">
+                      <label for="to-date-casual">To</label>
+                      <input type="date" id="to-date-casual" name="to-date" />
+                  </div>
+              </div>
+              <div class="row line-item">
+                <div class="col align-left input-container">
+                    <label for="casual-leave">Casual Leave</label>
+                    <input type="text" id="casual-leave" name="leavetype" />
+                </div>
+
+                <div class="col align-left input-container">
+                    <label for="from-date-casual">From</label>
+                    <input type="date" id="from-date-casual" name="from-date" />
+                </div>
+
+                <div class="col align-left input-container">
+                    <label for="to-date-casual">To</label>
+                    <input type="date" id="to-date-casual" name="to-date" />
+                </div>
+            </div>
+                <!-- Add similar blocks for Sick Leave and Earned Leave -->
+            </div>
+            <div class="button-container">
+                <button class="save-button" onclick="collectAndShowData()" role="button">
+                    Submit
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.4/xlsx.full.min.js"></script>
+
+    <script>
+        // Constants for element IDs
+        const EMPLOYEE_ID_INPUT = "employee-id";
+        const CASUAL_LEAVE_INPUT = "casual-leave";
+        const FROM_DATE_CASUAL_INPUT = "from-date-casual";
+        const TO_DATE_CASUAL_INPUT = "to-date-casual";
+        const OUTPUT_DIV = "output";
+
+        function collectAndShowData() {
+            const employeeId = document.getElementById(EMPLOYEE_ID_INPUT).value;
+
+            const casualLeave = {
+                type: "Casual Leave",
+                from: document.getElementById(FROM_DATE_CASUAL_INPUT).value,
+                to: document.getElementById(TO_DATE_CASUAL_INPUT).value
+            };
+
+            // Add similar blocks for Sick Leave and Earned Leave
+            const sickLeave = {
+                type: "Sick Leave",
+                from: document.getElementById("from-date-sick").value,
+                to: document.getElementById("to-date-sick").value
+            };
+
+            const earnedLeave = {
+                type: "Earned Leave",
+                from: document.getElementById("from-date-earned").value,
+                to: document.getElementById("to-date-earned").value
+            };
+
+            const jsonData = {
+                employeeId: employeeId,
+                leaves: [casualLeave, sickLeave, earnedLeave]
+            };
+            console.log(jsonData)
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dropdown List with Arrow</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .dropdown {
+      position: relative;
+      display: inline-block;
+    }
+
+    .dropdown-btn {
+      background-color: #3498db;
+      color: #fff;
+      padding: 10px 20px 10px 10px;
+      border: none;
+      cursor: pointer;
+      position: relative;
+    }
+
+    .dropdown-btn::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      right: 10px;
+      transform: translateY(-50%);
+      border: 6px solid transparent;
+      border-top-color: #fff;
+    }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: #fff;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+      z-index: 1;
+    }
+
+    .dropdown-content a {
+      color: #333;
+      padding: 12px 16px;
+      text-decoration: none;
+      display: block;
+    }
+
+    .dropdown-content a:hover {
+      background-color: #f1f1f1;
+    }
+
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+
+<div class="dropdown">
+  <button class="dropdown-btn" id="selectedOption">Select an option</button>
+  <div class="dropdown-content">
+    <a href="#" onclick="selectOption('Option 1')">Option 1</a>
+    <a href="#" onclick="selectOption('Option 2')">Option 2</a>
+    <a href="#" onclick="selectOption('Option 3')">Option 3</a>
+  </div>
+</div>
+
+<script>
+  function selectOption(option) {
+    document.getElementById('selectedOption').innerText = option;
+  }
+</script>
+
+</body>
+</html>
